@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useState}from 'react'
 
-const Todo =()=>{
+const Todo =(props)=> {
+    
+    const[title, setTitle] = useState(props.data.title);
+    const[description, setDescription] = useState(props.data.description);
+
     return(
-        <h1>Todo</h1>
+        <>
+        <h2>
+            {title}
+        </h2>
+        <h3>
+            {description}
+        </h3>
+        </>
     )
-}
+} 
+
 export default Todo;

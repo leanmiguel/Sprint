@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 
-import Todo from './components/Todo'
+import Todos from './components/Todos'
 
 import './App.css';
 
@@ -19,7 +19,7 @@ const App = () => {
 
     <Switch>
           <Route path="/todo">
-            <Todo />
+            <Todos />
           </Route>
           <Route path="/">
             <h1>Home</h1>

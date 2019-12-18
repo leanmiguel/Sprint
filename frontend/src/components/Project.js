@@ -1,9 +1,10 @@
 import React, {useState}from 'react'
 
-const Todo =(props)=> {
+const Project =(props)=> {
     
     const[title, setTitle] = useState(props.data.title);
     const[description, setDescription] = useState(props.data.description);
+    const[users, setUsers] = useState([...props.data.users])
 
     return(
         <>
@@ -13,9 +14,9 @@ const Todo =(props)=> {
         <h3>
             {description}
         </h3>
-        <button>x</button>
+        {users.map(user=><h4>{user.name}</h4>)}
         </>
     )
 } 
 
-export default Todo;
+export default Project;

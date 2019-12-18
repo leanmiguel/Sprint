@@ -1,0 +1,25 @@
+[{
+    "title":"proj1",
+    "description":"first proj",
+    "users":[
+        {"userId":"1",
+         "name":"Arthur"  
+        },
+        {"userId":"2",
+         "name":"Lean"  
+        }
+    ]
+},
+{
+    "title":"proj2",
+    "description":"second proj",
+    "users":[
+        {"userId":"1",
+         "name":"Arthur"  
+        },
+        {"userId":"2",
+         "name":"Lean"  
+        }
+    ]
+}
+]

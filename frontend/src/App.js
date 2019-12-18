@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import Todos from './components/Todos'
-
+import Home from './components/Home'
 import './App.css';
 
 
@@ -22,7 +22,8 @@ const App = () => {
             <Todos />
           </Route>
           <Route path="/">
-            <h1>Home</h1>
+            <Home />
+
           </Route>
         </Switch>  
   </Router>)

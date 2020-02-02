@@ -8,9 +8,7 @@ import {
 
 import Todos from './components/Todos'
 import Home from './components/Home/Home'
-import Project from 
-import './App.css';
-
+import ProjectPage from './components/ProjectPage'
 
 const App = () => {
 
@@ -20,7 +18,7 @@ const App = () => {
         <Route path="/">
           <Home />
         </Route>
-        <Route path="project/:id"  />
+        <Route path="project/:id"  component={ProjectPage} />
       </Switch>  
     </Router>
   )

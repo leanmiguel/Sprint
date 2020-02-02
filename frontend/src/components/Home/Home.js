@@ -10,9 +10,9 @@ import projs from '../../json/projects'
 
 import Project from '../Project'
 
-const Projects =()=> {
+const Home =()=> {
     
-    const projects = useProjects('userid');
+    
     const [projects, setTodos] = useState([...projs]);
 
     return (

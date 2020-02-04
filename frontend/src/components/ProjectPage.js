@@ -1,12 +1,15 @@
 import React, { Component, useState} from 'react'
 
-const ProjectPage =(props)=> {
+const ProjectPage =({match, location})=> {
 
     return(
+        <>
         <div>
-            {props.match.params.id}
-            {props}
+        <code>{JSON.stringify(match, null, 2)}</code>
+        <br/>
+        <code>{JSON.stringify(location, null, 2)}</code>
         </div>
+        </>
     )
 } 
 

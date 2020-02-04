@@ -8,17 +8,15 @@ import {
 
 import Todos from './components/Todos'
 import Home from './components/Home/Home'
-import ProjectPage from './components/ProjectPage'
+import ProjectPage from './components/ProjectPage' 
 
 const App = () => {
 
   return (
     <Router>
       <Switch>
-        <Route path="/">
-          <Home />
-        </Route>
-        <Route path="project/:id"  component={ProjectPage} />
+        <Route exact  path="/" component={Home}/>
+        <Route exact path="/projects/:id"  component={ProjectPage} />
       </Switch>  
     </Router>
   )

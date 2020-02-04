@@ -24,7 +24,7 @@ const Project =(props)=> {
         <h3>
             {description}
         </h3>
-        {users.map(user=><h4>{user.name}</h4>)}
+        {users.map(user=><h4 key={user.userId}>{user.name}</h4>)}
         </div>
     )
 } 

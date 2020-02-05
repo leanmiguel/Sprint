@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,16 +9,22 @@ import {
 import Todos from './components/Todos'
 import Home from './components/Home/Home'
 import ProjectPage from './components/ProjectPage' 
+import Login from './components/Register-Login/Login';
+import SignUp from './components/Register-Login/SignUp';
+
 
 const App = () => {
 
   return (
+    
     <Router>
       <Switch>
-        <Route exact  path="/" component={Home}/>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/signup" component={SignUp}/>
         <Route exact path="/projects/:id"  component={ProjectPage} />
       </Switch>  
-    </Router>
+    </Router> 
   )
 }
 

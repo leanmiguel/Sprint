@@ -1,16 +1,15 @@
-import React, { Component, useState} from 'react'
+import React, { Component, useState } from "react"
 
-const ProjectPage =({match, location})=> {
-
-    return(
-        <>
-        <div>
+const ProjectPage = ({ match, location }) => {
+  return (
+    <>
+      <div>
         <code>{JSON.stringify(match, null, 2)}</code>
-        <br/>
+        <br />
         <code>{JSON.stringify(location, null, 2)}</code>
-        </div>
-        </>
-    )
-} 
+      </div>
+    </>
+  )
+}
 
-export default ProjectPage;
+export default ProjectPage

@@ -1,6 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
-export const ProjectContainer = styled.div`
-    display: flex;
-    
+export const ProjectsContainer = styled.div`
+  display: flex;
 `

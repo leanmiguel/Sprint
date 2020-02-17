@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 
-import Todos from "./components/Todos"
+import Todos from "./components/Other/Todo"
 import Home from "./components/Home/Home"
-import ProjectPage from "./components/ProjectPage"
+import ProjectPage from "./components/Project/ProjectPage"
 import Login from "./components/Register-Login/Login"
 import SignUp from "./components/Register-Login/SignUp"
 import gql from "graphql-tag"
 import { useQuery } from "@apollo/react-hooks"
-import Meeting from "./components/Meeting"
+import Meeting from "./components/Meeting/Meeting"
 
 const GET_USERS = gql`
   {

@@ -8,7 +8,7 @@ import { ProjectsContainer } from "./Home.styles"
 
 import projs from "../../json/projects"
 
-import Project from "../Project"
+import Project from "./Project"
 
 const Home = () => {
   const [projects, setTodos] = useState([...projs])

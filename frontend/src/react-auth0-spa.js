@@ -1,6 +1,7 @@
 // src/react-auth0-spa.js
 import React, { useState, useEffect, useContext } from "react";
 import createAuth0Client from "@auth0/auth0-spa-js";
+import LandingPage from "./components/LandingPage/LandingPage";
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
@@ -17,8 +18,6 @@ export const Auth0Provider = ({
   const [auth0Client, setAuth0] = useState();
   const [loading, setLoading] = useState(true);
   const [popupOpen, setPopupOpen] = useState(false);
-
-  console.log(loading);
   useEffect(() => {
     const initAuth0 = async () => {
       const auth0FromHook = await createAuth0Client(initOptions);
@@ -85,7 +84,7 @@ export const Auth0Provider = ({
         logout: (...p) => auth0Client.logout(...p)
       }}
     >
-      {children}
+      {isAuthenticated ? children : <LandingPage />}
     </Auth0Context.Provider>
   );
 };

@@ -2,7 +2,7 @@ import React, { Component, useState } from "react"
 
 //styled components
 
-import { ProjectsContainer } from "./Home.styles"
+import { ProjectsContainer, Header } from "./Home.styles"
 
 //placeholder for fetching projects
 
@@ -15,12 +15,11 @@ const Home = () => {
 
   return (
     <>
-      <h1>Your Projects</h1>
+      <Header>Your Projects</Header>
       <ProjectsContainer>
         {projects.map(proj => (
           <Project key={proj.title} data={proj} />
         ))}
-        <div>+</div>
       </ProjectsContainer>
     </>
   )

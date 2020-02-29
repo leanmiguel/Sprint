@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 
 //styled components
 
-import { ProjectContainer } from "./Project.styles"
+import { ProjectContainer, UsersContainer, UserIcon } from "./Project.styles"
 
 const Project = props => {
   const [id, setId] = useState(props.data.id)
@@ -16,9 +16,12 @@ const Project = props => {
     <ProjectContainer>
       <Link to={`/projects/${id}`}>{title}</Link>
       <h3>{description}</h3>
-      {users.map(user => (
-        <h4 key={user.userId}>{user.name}</h4>
-      ))}
+      <h3>Next Meeting</h3>
+      <UsersContainer>
+        {users.map(user => (
+          <UserIcon>{user.name.charAt(0).toUpperCase()}</UserIcon>
+        ))}
+      </UsersContainer>
     </ProjectContainer>
   )
 }

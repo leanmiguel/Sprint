@@ -1,27 +1,47 @@
-[{
-    "id":"12345",
-    "title":"proj1",
-    "description":"first proj",
-    "users":[
-        {"userId":"1",
-         "name":"Arthur"  
-        },
-        {"userId":"2",
-         "name":"Lean"  
-        }
-    ]
-},
-{
-    "id":"12346",
-    "title":"proj2",
-    "description":"second proj",
-    "users":[
-        {"userId":"1",
-         "name":"Arthur"  
-        },
-        {"userId":"2",
-         "name":"Lean"  
-        }
-    ]
-}
+[
+	{
+		"id": "12345",
+		"title": "proj1",
+		"description": "first proj",
+		"users": [
+			{
+				"userId": "1",
+				"name": "Arthur"
+			},
+			{
+				"userId": "2",
+				"name": "Lean"
+			}
+		]
+	},
+	{
+		"id": "12346",
+		"title": "proj2",
+		"description": "second proj",
+		"users": [
+			{
+				"userId": "1",
+				"name": "Arthur"
+			},
+			{
+				"userId": "2",
+				"name": "Lean"
+			}
+		]
+	},
+	{
+		"id": "12346",
+		"title": "proj2",
+		"description": "second proj",
+		"users": [
+			{
+				"userId": "1",
+				"name": "Arthur"
+			},
+			{
+				"userId": "2",
+				"name": "Lean"
+			}
+		]
+	}
 ]

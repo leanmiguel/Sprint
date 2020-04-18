@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 //styled components
 
-import { ProjectsContainer, Header } from "./Home.styles"
+import { ProjectsContainer, Header ,AddContainer} from "./Home.styles"
 
 //placeholder for fetching projects
 
@@ -20,6 +20,7 @@ const Home = () => {
         {projects.map(proj => (
           <Project key={proj.title} data={proj} />
         ))}
+      <AddContainer>hi</AddContainer>
       </ProjectsContainer>
     </>
   );

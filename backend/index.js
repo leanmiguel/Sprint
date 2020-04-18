@@ -1,10 +1,22 @@
-const express = require("express");
-const app = express();
-const port = 8000;
+// setup
+require("dotenv").config()
 
-// respond with "hello world" when a GET request is made to the homepage
-app.get("/", function(req, res) {
-  res.send("hello world");
-});
+// postgres setup
+const { Client } = require("pg")
 
-app.listen(port, () => console.log(`App is running on ${port}!`));
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+})
+
+client.connect()
+
+client.query("SELECT * FROM users", (err, res) => {
+  if (err) throw err
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row))
+  }
+  client.end()
+})

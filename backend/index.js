@@ -1,6 +1,23 @@
 // setup
 require("dotenv").config()
 
+//graphql setup
+
+const { ApolloServer, gql } = require("apollo-server")
+
+// A schema is a collection of type definitions (hence "typeDefs")
+// that together define the "shape" of queries that are executed against
+// your data.
+const typeDefs = gql`
+  type User {
+    id: ID
+    name: String
+  }
+  type Query {
+    users: [User]
+  }
+`
+
 // postgres setup
 const { Client } = require("pg")
 
@@ -13,10 +30,22 @@ const client = new Client({
 
 client.connect()
 
-client.query("SELECT * FROM users", (err, res) => {
-  if (err) throw err
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row))
-  }
-  client.end()
+const getUsers = async () => {
+  const info = await client.query("SELECT * FROM users")
+  return info.rows
+}
+
+const resolvers = {
+  Query: {
+    users: getUsers,
+  },
+}
+
+// The ApolloServer constructor requires two parameters: your schema
+// definition and your set of resolvers.
+const server = new ApolloServer({ typeDefs, resolvers })
+
+// The `listen` method launches a web server.
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`)
 })

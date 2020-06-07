@@ -28,20 +28,5 @@
 				"name": "Lean"
 			}
 		]
-	},
-	{
-		"id": "12347",
-		"title": "proj3",
-		"description": "third proj",
-		"users": [
-			{
-				"userId": "1",
-				"name": "Arthur"
-			},
-			{
-				"userId": "2",
-				"name": "Lean"
-			}
-		]
 	}
 ]

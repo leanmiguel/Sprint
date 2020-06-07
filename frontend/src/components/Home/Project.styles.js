@@ -7,10 +7,11 @@ export const ProjectContainer = styled.div`
 	justify-content: start;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	transition: 0.3s;
+	box-sizing: border-box;
 	padding: 20px;
-	margin-right: 6%;
-	height: 93%;
-	width: 27%;
+	margin: 2.5%;
+	width: 28%;
+	height: 25%;
 	border-radius: 15px;
 `
 export const UsersContainer = styled.div`

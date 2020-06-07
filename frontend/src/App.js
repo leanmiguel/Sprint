@@ -8,6 +8,8 @@ import Login from './components/Register-Login/Login'
 import SignUp from './components/Register-Login/SignUp'
 import gql from 'graphql-tag'
 
+import GlobalFonts from './font/GlobalFont.styles'
+
 import Meeting from './components/Meeting/Meeting'
 
 const App = () => {
@@ -19,15 +21,18 @@ const App = () => {
 	// console.log(data)
 
 	return (
-		<Router>
-			<Switch>
-				<Route exact path="/" component={Home} />
-				<Route exact path="/login" component={Login} />
-				<Route exact path="/signup" component={SignUp} />
-				<Route exact path="/projects/:id" component={ProjectPage} />
-				<Route exact path="/meeting/:id" component={Meeting} />
-			</Switch>
-		</Router>
+		<>
+			<GlobalFonts/>
+			<Router>
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<Route exact path="/login" component={Login} />
+					<Route exact path="/signup" component={SignUp} />
+					<Route exact path="/projects/:id" component={ProjectPage} />
+					<Route exact path="/meeting/:id" component={Meeting} />
+				</Switch>
+			</Router>
+		</>
 	)
 }
 

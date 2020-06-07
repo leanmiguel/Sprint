@@ -5,7 +5,6 @@ export const ProjectsContainer = styled.div`
 	overflow-x: auto;
 	padding: 5%;
 `
-export const Header = styled.h1`text-align: center;`
 
 export const AddContainer = styled.div`
 	display: inline-flex;

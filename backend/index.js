@@ -1,22 +1,14 @@
 // setup
 require("dotenv").config()
 
-// postgres setup
-const { Client } = require("pg")
+//graphql setup
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
-})
+const { ApolloServer } = require("apollo-server")
+const { resolvers } = require("./graphql/resolvers")
+const { typeDefs } = require("./graphql/typeDefs")
 
-client.connect()
+const server = new ApolloServer({ typeDefs, resolvers })
 
-client.query("SELECT * FROM users", (err, res) => {
-  if (err) throw err
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row))
-  }
-  client.end()
+server.listen().then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`)
 })

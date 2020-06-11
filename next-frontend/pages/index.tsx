@@ -17,6 +17,18 @@ const Home = () => {
 				<button>Try It Now</button>
 			</div>
 			<img src={mock} alt="mock" id="mock" />
+			<style jsx>{`
+				@font-face {
+					font-family: 'rabbidhighwaysignii';
+					src: url('/fonts/rabbidhighwaysignii-webfont.woff');
+					src: url('/fonts/rabbidhighwaysignii-webfont.woff2');
+				}
+				h1,
+				h4,
+				button {
+					font-family: 'rabbidhighwaysignii';
+				}
+			`}</style>
 		</div>
 	)
 }

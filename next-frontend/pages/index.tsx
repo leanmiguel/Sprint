@@ -1,15 +1,24 @@
-import Head from "next/head";
+import Head from 'next/head'
+import mock from '../images/mock.jpg'
 
 const Home = () => {
-  return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <h1>Finish Your Projects Faster</h1>
-    </div>
-  );
-};
+	return (
+		<div>
+			<Head>
+				<title>sprint</title>
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+			<div>
+				<h1>Finish Your Projects Faster</h1>
+				<h4>
+					Sprint is the best way to supercharge your productivity. Collaborate with others, knock out your
+					goals, and complete projects faster with Sprint.{' '}
+				</h4>
+				<button>Try It Now</button>
+			</div>
+			<img src={mock} alt="mock" id="mock" />
+		</div>
+	)
+}
 
-export default Home;
+export default Home

@@ -1,5 +1,14 @@
+body {
+  margin: 0;
+}
+
 @font-face {
-  font-family: "rabbidhighwaysignii";
+  font-family: "Rabbid Highway";
   src: url("/fonts/rabbidhighwaysignii-webfont.woff");
   src: url("/fonts/rabbidhighwaysignii-webfont.woff2");
+}
+
+@font-face {
+  font-family: "Cantarell";
+  src: url("/fonts/Cantarell-Regular.ttf");
 }

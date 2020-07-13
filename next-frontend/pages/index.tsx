@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import mock from "../images/mock.jpg"
 
+import Link from "next/link"
 const Page = styled.div`
   margin-right: 15%;
   grid-area: 2 / 2 / 3 / 3;
@@ -110,6 +111,7 @@ const Home = () => {
           </Description>
           <TryItCTA>Try It Now</TryItCTA>
           <LandingImage src={mock} alt="mock" id="mock" />
+          <Link href="/project">project</Link>
         </PageContent>
       </Page>
     </>

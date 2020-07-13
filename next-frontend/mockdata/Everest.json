@@ -1,0 +1,82 @@
+{
+	"id": "12345",
+	"title": "Everest",
+	"description": "first proj",
+	"next_7days": [
+		{
+			"title": "Work on design",
+			"day": "Mon",
+			"date": "10"
+		},
+		{
+			"title": "Break",
+			"day": "Tue",
+			"date": "11"
+		},
+		{
+			"title": "Complete Backend",
+			"day": "Wed",
+			"date": "12"
+		},
+		{
+			"title": "Link Back and Frontend",
+			"day": "Thu",
+			"date": "13"
+		},
+		{
+			"title": "Polish frontend",
+			"day": "Fri",
+			"date": "14"
+		},
+		{
+			"title": "Break",
+			"day": "Sat",
+			"date": "15"
+		},
+		{
+			"title": "Release",
+			"day": "Sun",
+			"date": "16"
+		}
+	],
+	"upcoming_tasks": [
+		{
+			"task": "Get correct font",
+			"done": true
+		},
+		{
+			"task": "Optimize grid",
+			"done": false
+		},
+		{
+			"task": "Choose color profile",
+			"done": false
+		},
+		{
+			"task": "Complete design",
+			"done": false
+		},
+		{
+			"task": "Complete design",
+			"done": false
+		},
+		{
+			"task": "Complete design",
+			"done": false
+		},
+		{
+			"task": "Complete design",
+			"done": false
+		},
+		{
+			"task": "Complete design",
+			"done": false
+		}
+	],
+	"next_meeting": {
+		"title": "Work on design",
+		"desc": "Have a working design by the end of the work session ",
+		"start": "9:00",
+		"duration": "0:45"
+	}
+}

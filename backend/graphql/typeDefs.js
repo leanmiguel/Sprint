@@ -4,10 +4,24 @@ module.exports = {
   typeDefs: gql`
     type User {
       id: ID
-      name: String
+      name: String!
+    }
+    type Task {
+      task: String!
+      completed: Boolean!
+    }
+    type WorkSession {
+      name: String!
+      duration: Int!
+    }
+    type Project {
+      name: String!
+      tasks: [Task!]
+      workSessions: [WorkSession!]
     }
     type Query {
-      users: [User]
+      getUsers: [User!]
+      getProjects(id: ID): [Project!]
     }
     type Mutation {
       addUser(name: String!): User!

@@ -3,12 +3,14 @@ const {
   addUser,
   updateUser,
   deleteUser,
+  getProjects,
 } = require("../postgres/queries")
 
 module.exports = {
   resolvers: {
     Query: {
-      users: getUsers,
+      getUsers: getUsers,
+      getProjects: getProjects,
     },
     Mutation: {
       addUser: addUser,

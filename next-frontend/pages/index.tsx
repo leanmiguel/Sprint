@@ -1,9 +1,10 @@
-import Head from "next/head"
-import styled from "styled-components"
+import Head from "next/head";
+import styled from "styled-components";
 
-import mock from "../images/mock.jpg"
+import { useUser } from "../utils/auth/useUser";
+import mock from "../images/mock.jpg";
 
-import Link from "next/link"
+import Link from "next/link";
 const Page = styled.div`
   margin-right: 15%;
   grid-area: 2 / 2 / 3 / 3;
@@ -12,7 +13,7 @@ const Page = styled.div`
   grid-template-rows: repeat(2, auto);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-`
+`;
 
 const PageContent = styled.div`
   justify-self: end;
@@ -25,7 +26,7 @@ const PageContent = styled.div`
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 10%;
   grid-row-gap: 0px;
-`
+`;
 
 const Header = styled.h1`
   grid-area: 1 / 1 / 2 / 2;
@@ -33,7 +34,7 @@ const Header = styled.h1`
   font-size: 72px;
   line-height: 1.1;
   margin: 0;
-`
+`;
 
 const Description = styled.p`
   grid-area: 2 / 1 / 3 / 2;
@@ -42,7 +43,7 @@ const Description = styled.p`
   line-height: 1.3;
   margin: 0;
   align-self: end;
-`
+`;
 
 const TryItCTA = styled.button`
   grid-area: 3 / 1 / 4 / 2;
@@ -55,7 +56,7 @@ const TryItCTA = styled.button`
   border: none;
   height: 68px;
   align-self: end;
-`
+`;
 
 const SignUpButton = styled.button`
   font-family: Rabbid Highway;
@@ -67,30 +68,32 @@ const SignUpButton = styled.button`
   height: 50px;
   width: 170px;
   align-self: end;
-`
+`;
 
 const LandingImage = styled.img`
   width: 100%;
   height: 100%;
   grid-area: 1 / 2 / 4 / 3;
   object-fit: cover;
-`
+`;
 
 const Nav = styled.nav`
   margin-top: 30px;
   height: 95px;
   grid-area: 1 / 2 / 2 / 3;
   justify-self: end;
-`
+`;
 
 const SideBar = styled.div`
   width: 100%;
   height: 100vh;
   background-color: #dbdbdb;
   grid-area: 1 / 1 / 3 / 2;
-`
+`;
 
 const Home = () => {
+  const { user, logout } = useUser();
+  console.log(user);
   return (
     <>
       <Head>
@@ -99,7 +102,9 @@ const Home = () => {
       </Head>
       <Page>
         <Nav>
-          <SignUpButton>Sign Up</SignUpButton>
+          <Link href="/auth" passHref>
+            <SignUpButton>Sign Up</SignUpButton>
+          </Link>
         </Nav>
         <SideBar />
         <PageContent>
@@ -115,7 +120,7 @@ const Home = () => {
         </PageContent>
       </Page>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

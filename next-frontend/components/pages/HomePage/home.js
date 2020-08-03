@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import { useUser } from '../../../utils/auth/useUser';
-import Projects from '../projects/projects';
-import Link from 'next/link';
 const Page = styled.div`
   margin-right: 15%;
   grid-area: 2 / 2 / 3 / 3;
@@ -113,6 +113,7 @@ const LandingPage = () => (
 
 const Home = () => {
   const { user, logout } = useUser();
+  const router = useRouter();
 
   return (
     <>
@@ -120,7 +121,7 @@ const Home = () => {
         <title>Sprint</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {user ? <Projects /> : <LandingPage />}
+      {user ? router.push('/user') : <LandingPage />}
     </>
   );
 };

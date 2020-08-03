@@ -7,27 +7,6 @@ import Nextday from '../../nextday';
 import Upcoming from '../../upcoming';
 import NextMeeting from '../../nextmeeting';
 
-import { useQuery, gql } from '@apollo/client';
-
-const query = gql`
-  query {
-    getUser {
-      id
-      name
-      projects {
-        name
-        description
-        tasks {
-          task
-        }
-        workSessions {
-          name
-        }
-      }
-    }
-  }
-`;
-
 const Page = styled.div`
   grid-area: 2 / 2 / 3 / 3;
   display: grid;
@@ -115,8 +94,6 @@ class projectData {
 
 const project = () => {
   let data = Object.assign(new projectData(), Everest);
-
-  const { loading, error, data: graphData } = useQuery(query);
 
   return (
     <>

@@ -1,4 +1,4 @@
-const { getUser } = require("../database/queries");
+const { getUser } = require('../database/queries');
 
 module.exports = {
   resolvers: {

@@ -1,11 +1,32 @@
-import Head from "next/head";
-import React, { useState } from "react";
-import styled from "styled-components";
-import Link from "next/link";
-import Everest from "../../../mockdata/Everest.json";
-import Nextday from "../../nextday";
-import Upcoming from "../../upcoming";
-import NextMeeting from "../../nextmeeting";
+import Head from 'next/head';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Link from 'next/link';
+import Everest from '../../../mockdata/Everest.json';
+import Nextday from '../../nextday';
+import Upcoming from '../../upcoming';
+import NextMeeting from '../../nextmeeting';
+
+import { useQuery, gql } from '@apollo/client';
+
+const query = gql`
+  query {
+    getUser {
+      id
+      name
+      projects {
+        name
+        description
+        tasks {
+          task
+        }
+        workSessions {
+          name
+        }
+      }
+    }
+  }
+`;
 
 const Page = styled.div`
   grid-area: 2 / 2 / 3 / 3;
@@ -94,6 +115,9 @@ class projectData {
 
 const project = () => {
   let data = Object.assign(new projectData(), Everest);
+
+  const { loading, error, data: graphData } = useQuery(query);
+
   return (
     <>
       <Head>
@@ -108,9 +132,7 @@ const project = () => {
         <PageContent>
           <NextDays>
             <TitleContainer>Next 7 Days</TitleContainer>
-            {data.next_7days.map((day) =>
-              Nextday(day.day, day.date, day.title)
-            )}
+            {data.next_7days.map((day) => Nextday(day.day, day.date, day.title))}
           </NextDays>
           <UpcomingTasks>
             <TitleContainer>Upcoming Tasks</TitleContainer>

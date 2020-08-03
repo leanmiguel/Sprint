@@ -1,9 +1,9 @@
-import Head from "next/head";
-import styled from "styled-components";
+import Head from 'next/head';
+import styled from 'styled-components';
 
-import { useUser } from "../../../utils/auth/useUser";
-import Projects from "../projects/projects";
-import Link from "next/link";
+import { useUser } from '../../../utils/auth/useUser';
+import Projects from '../projects/projects';
+import Link from 'next/link';
 const Page = styled.div`
   margin-right: 15%;
   grid-area: 2 / 2 / 3 / 3;
@@ -101,9 +101,8 @@ const LandingPage = () => (
     <PageContent>
       <Header>Finish Your Projects Faster</Header>
       <Description>
-        Sprint is the best way to supercharge your productivity. Collaborate
-        with others, knock out your goals, and complete projects faster with
-        Sprint.
+        Sprint is the best way to supercharge your productivity. Collaborate with others, knock out
+        your goals, and complete projects faster with Sprint.
       </Description>
       <TryItCTA>Try It Now</TryItCTA>
       <LandingImage src="/home-mock.jpg" alt="mock" id="mock" />

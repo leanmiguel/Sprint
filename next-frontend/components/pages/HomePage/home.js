@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
 
+import Link from 'next/link';
 import { useUser } from '../../../utils/auth/useUser';
 const Page = styled.div`
   margin-right: 15%;
@@ -90,7 +89,7 @@ const SideBar = styled.div`
   grid-area: 1 / 1 / 3 / 2;
 `;
 
-const LandingPage = () => (
+export const LandingPage = () => (
   <Page>
     <Nav>
       <Link href="/auth" passHref>
@@ -121,7 +120,7 @@ const Home = () => {
         <title>Sprint</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {user ? router.push('/user') : <LandingPage />}
+      {user ? router.push('/user') : router.push('/landing')}
     </>
   );
 };

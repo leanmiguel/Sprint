@@ -3,7 +3,8 @@ const { gql } = require('apollo-server');
 module.exports = {
   typeDefs: gql`
     type User {
-      id: ID
+      id: ID!
+      uid: String!
       name: String!
       projects: [Project!]
     }
@@ -21,10 +22,11 @@ module.exports = {
       workSessions: [WorkSession!]
     }
     type Query {
-      getUser: User!
+      getUser(id: String!): User!
     }
     type Mutation {
       addProject(userId: ID!, name: String!, description: String): Project!
+      addUser(id: String!, name: String!): User!
     }
   `,
 };

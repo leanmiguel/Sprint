@@ -1,4 +1,4 @@
-const { getUser, addProject } = require('../database/queries');
+const { getUser, addProject, addUser } = require('../database/queries');
 
 module.exports = {
   resolvers: {
@@ -7,6 +7,7 @@ module.exports = {
     },
     Mutation: {
       addProject,
+      addUser,
     },
   },
 };

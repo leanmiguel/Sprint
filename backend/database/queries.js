@@ -2,12 +2,12 @@ const User = require('./Models/User');
 const UserProject = require('./Models/UserProject');
 const Project = require('./Models/Project');
 
-async function getUser() {
-  const projects = await User.query()
-    .where('name', 'Big Game')
+async function getUser(_, args) {
+  const user = await User.query()
+    .findOne('uid', args.id)
     .withGraphFetched('projects.[tasks,workSessions]');
 
-  return projects[0];
+  return user;
 }
 
 async function addProject(_, args) {
@@ -25,7 +25,17 @@ async function addProject(_, args) {
 
   return project;
 }
+
+async function addUser(_, args) {
+  const user = User.query().insert({
+    name: args.name,
+    uid: args.id,
+  });
+
+  return user;
+}
 module.exports = {
   getUser,
   addProject,
+  addUser,
 };

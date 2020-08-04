@@ -3,8 +3,8 @@ import GraphQLClient from '../gql/client';
 
 const query = `
   query {
-    getUser {
-      id
+    getUser(id: "Y8QFm9bycSPyAYspm49qFhPeOK63") {
+      uid
       name
       projects {
         name
@@ -21,9 +21,10 @@ const query = `
 `;
 
 const Page = ({ data }) => {
-  const { name, id, projects } = data.getUser;
-  return <UserPage name={name} id={id} projects={projects} />;
+  const { name, uid, projects } = data.getUser;
+  return <UserPage name={name} id={uid} projects={projects} />;
 };
+
 export default Page;
 
 export async function getServerSideProps(context) {

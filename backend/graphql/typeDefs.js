@@ -16,12 +16,15 @@ module.exports = {
     }
     type Project {
       name: String!
-      description: String!
+      description: String
       tasks: [Task!]
       workSessions: [WorkSession!]
     }
     type Query {
       getUser: User!
+    }
+    type Mutation {
+      addProject(userId: ID!, name: String!, description: String): Project!
     }
   `,
 };

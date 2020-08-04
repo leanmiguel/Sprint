@@ -1,15 +1,15 @@
-const knex = require("../Knex");
-const { Model } = require("objection");
+const { Model } = require('objection');
+const knex = require('../Knex');
 
 Model.knex(knex);
 
 class Task extends Model {
   static get tableName() {
-    return "tasks";
+    return 'tasks';
   }
 
   static get idColumn() {
-    return "id";
+    return 'id';
   }
 }
 

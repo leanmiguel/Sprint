@@ -3,9 +3,9 @@ const knex = require('../Knex');
 
 Model.knex(knex);
 
-class WorkSession extends Model {
+class UserProject extends Model {
   static get tableName() {
-    return 'work_sessions';
+    return 'users_projects';
   }
 
   static get idColumn() {
@@ -13,4 +13,4 @@ class WorkSession extends Model {
   }
 }
 
-module.exports = WorkSession;
+module.exports = UserProject;

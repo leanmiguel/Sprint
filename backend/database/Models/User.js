@@ -1,30 +1,30 @@
-const knex = require("../Knex");
-const { Model } = require("objection");
+const { Model } = require('objection');
+const knex = require('../Knex');
 
 Model.knex(knex);
 
 class User extends Model {
   static get tableName() {
-    return "users";
+    return 'users';
   }
 
   static get idColumn() {
-    return "id";
+    return 'id';
   }
 
   static get relationMappings() {
-    const Project = require("./Project");
+    const Project = require('./Project');
     return {
       projects: {
         relation: Model.ManyToManyRelation,
         modelClass: Project,
         join: {
-          from: "users.id",
+          from: 'users.id',
           through: {
-            from: "users_projects.user_id",
-            to: "users_projects.project_id",
+            from: 'users_projects.user_id',
+            to: 'users_projects.project_id',
           },
-          to: "projects.id",
+          to: 'projects.id',
         },
       },
     };

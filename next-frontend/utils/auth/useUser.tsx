@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import cookies from "js-cookie";
-import firebase from "firebase/app";
-import "firebase/auth";
-import initFirebase from "../auth/initFirebase";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import cookies from 'js-cookie';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import initFirebase from '../auth/initFirebase';
 
 initFirebase();
 
@@ -17,9 +17,9 @@ const useUser = () => {
       .signOut()
       .then(() => {
         // Sign-out successful.
-        cookies.remove("auth");
+        cookies.remove('auth');
         setUser();
-        router.push("/auth");
+        router.push('/auth');
       })
       .catch((e) => {
         console.error(e);
@@ -27,9 +27,9 @@ const useUser = () => {
   };
 
   useEffect(() => {
-    const cookie = cookies.get("auth");
+    const cookie = cookies.get('auth');
     if (!cookie) {
-      router.push("/");
+      router.push('/');
       return;
     }
     setUser(JSON.parse(cookie));

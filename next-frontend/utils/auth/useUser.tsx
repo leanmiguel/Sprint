@@ -6,6 +6,8 @@ import 'firebase/auth';
 import initFirebase from '../auth/initFirebase';
 import GraphQLClient from '../../gql/client';
 
+import { useUserState } from '../../components/context/UserContext';
+
 const GET_USER_QUERY = `query getUser($id: String!) {
   getUser(id: $id) {
     id
@@ -27,7 +29,8 @@ const ADD_USER_MUTATION = `mutation addUser($id: String!, $name: String!){
 initFirebase();
 
 const useUser = () => {
-  const [user, setUser] = useState(null);
+  const { user, setUser } = useUserState();
+
   const router = useRouter();
 
   const logout = async () => {

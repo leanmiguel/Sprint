@@ -2,7 +2,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 
 import Link from 'next/link';
-import { useUser } from '../../../utils/auth/useUser';
+
 const Page = styled.div`
   margin-right: 15%;
   grid-area: 2 / 2 / 3 / 3;
@@ -90,39 +90,30 @@ const SideBar = styled.div`
 `;
 
 export const LandingPage = () => (
-  <Page>
-    <Nav>
-      <Link href="/auth" passHref>
-        <SignUpButton>Sign Up</SignUpButton>
-      </Link>
-    </Nav>
-    <SideBar />
-    <PageContent>
-      <Header>Finish Your Projects Faster</Header>
-      <Description>
-        Sprint is the best way to supercharge your productivity. Collaborate with others, knock out
-        your goals, and complete projects faster with Sprint.
-      </Description>
-      <TryItCTA>Try It Now</TryItCTA>
-      <LandingImage src="/home-mock.jpg" alt="mock" id="mock" />
-      {/* TODO: find a better way to serve images */}
-    </PageContent>
-  </Page>
+  <>
+    <Head>
+      <title>Sprint</title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <Page>
+      <Nav>
+        <Link href="/auth" passHref>
+          <SignUpButton>Sign Up</SignUpButton>
+        </Link>
+      </Nav>
+      <SideBar />
+      <PageContent>
+        <Header>Finish Your Projects Faster</Header>
+        <Description>
+          Sprint is the best way to supercharge your productivity. Collaborate with others, knock
+          out your goals, and complete projects faster with Sprint.
+        </Description>
+        <TryItCTA>Try It Now</TryItCTA>
+        <LandingImage src="/home-mock.jpg" alt="mock" id="mock" />
+        {/* TODO: find a better way to serve images */}
+      </PageContent>
+    </Page>
+  </>
 );
 
-const Home = () => {
-  const { user, logout } = useUser();
-  const router = useRouter();
-
-  return (
-    <>
-      <Head>
-        <title>Sprint</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      {user ? router.push('/user') : router.push('/landing')}
-    </>
-  );
-};
-
-export default Home;
+export default LandingPage;

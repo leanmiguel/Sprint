@@ -1,41 +1,31 @@
-import { useEffect } from 'react';
-import { useUser } from '../utils/auth/useUser';
-import { useRouter } from 'next/router';
 import { LandingPage } from '../components/pages/LandingPage/LandingPage';
 import UserPage from '../components/pages/UserPage/UserPage';
 import GraphQLClient from '../gql/client';
+import { parseCookies } from '../utils/parseCookies';
 
-const query = `
-  query {
-    getUser(id: "Y8QFm9bycSPyAYspm49qFhPeOK63") {
-      uid
+const GET_USER_QUERY = `query getUser($id: String!) {
+  getUser(id: $id) {
+    id
+    uid
+    name
+    projects{
       name
-      projects {
-        name
-        description
-        tasks {
-          task
-        }
-        workSessions {
-          name
-        }
-      }
     }
   }
+} 
 `;
 
 const Page = ({ data }) => {
-  const router = useRouter();
-  const { user, logout } = useUser();
-  const { error, name, uid, projects } = data.getUser;
-
-  return user ? <UserPage name={name} id={uid} projects={projects} /> : <LandingPage />;
+  const { noUser, error, name, uid, projects } = data.getUser;
+  return noUser || error ? <LandingPage /> : <UserPage name={name} id={uid} projects={projects} />;
 };
 export default Page;
 
 export async function getServerSideProps(context) {
+  const cookies = parseCookies(context.req);
+
   try {
-    const data = await GraphQLClient.request(query);
+    const data = await GraphQLClient.request(GET_USER_QUERY, { id: JSON.parse(cookies.auth).id });
     return {
       props: {
         data,
@@ -48,6 +38,7 @@ export async function getServerSideProps(context) {
         uid: null,
         projects: [],
         error: true,
+        noUser: true,
       },
     };
     return {

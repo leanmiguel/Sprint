@@ -12,7 +12,6 @@ const UserPage = ({ name, id, projects }) => {
           <div>Number of work sessions: {project.workSessions.length}</div>
         </div>
       ))}
-
       <div style={{ marginTop: '20px', background: 'red', cursor: 'pointer' }}>Add Project</div>
     </>
   );

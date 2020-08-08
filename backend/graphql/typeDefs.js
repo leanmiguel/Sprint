@@ -25,7 +25,7 @@ module.exports = {
       getUser(id: String!): User!
     }
     type Mutation {
-      addProject(userId: ID!, name: String!, description: String): Project!
+      addProject(userId: String!, name: String!, description: String): Project!
       addUser(id: String!, name: String!): User!
     }
   `,

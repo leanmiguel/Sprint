@@ -19,7 +19,7 @@ class User extends Model {
         relation: Model.ManyToManyRelation,
         modelClass: Project,
         join: {
-          from: 'users.id',
+          from: 'users.uid',
           through: {
             from: 'users_projects.user_id',
             to: 'users_projects.project_id',

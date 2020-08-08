@@ -1,11 +1,16 @@
+import { ApolloProvider } from '@apollo/client';
+
 import '../styles.css';
 import { UserProvider } from '../components/context/UserContext';
 
+import apollo from '../libs/apollo';
 function MyApp({ Component, pageProps }) {
   return (
-    <UserProvider>
-      <Component {...pageProps} />
-    </UserProvider>
+    <ApolloProvider client={apollo}>
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
+    </ApolloProvider>
   );
 }
 

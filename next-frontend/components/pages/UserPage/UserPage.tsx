@@ -1,30 +1,49 @@
+import { useQuery, gql, useMutation } from '@apollo/client';
 import { useUser } from '../../../utils/auth/useUser';
 import GraphQLClient from '../../../gql/client';
-
 import { useState } from 'react';
 
-const ADD_PROJECT_QUERY = `mutation ADD_PROJECT($id: String!, $name: String!, $description: String){
-	addProject(userId:$id, name: $name, description: $description ){
-    name
-    description
+const GET_USER_PROJECTS_QUERY = gql`
+  query getUserProjects($id: String!) {
+    getUser(id: $id) {
+      projects {
+        name
+        description
+        tasks {
+          task
+        }
+        workSessions {
+          name
+        }
+      }
+    }
   }
-}
+`;
+
+const ADD_PROJECT_QUERY = gql`
+  mutation ADD_PROJECT($id: String!, $name: String!, $description: String) {
+    addProject(userId: $id, name: $name, description: $description) {
+      name
+      description
+    }
+  }
 `;
 
 const UserPage = ({ name, id, projects }) => {
   const { user, logout } = useUser();
   const [projectName, setProjectName] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
+  const { loading, error, data } = useQuery(GET_USER_PROJECTS_QUERY, {
+    variables: { id: user ? user.id : id },
+  });
 
-  const addProject = async () => {
-    if (user && projectName) {
-      await GraphQLClient.request(ADD_PROJECT_QUERY, {
-        id: user.id,
-        name: projectName,
-        description: projectDescription,
-      });
-    }
+  console.log(data);
+  const [addProject] = useMutation(ADD_PROJECT_QUERY);
+
+  const handleAddProjectClick = () => {
+    if (user && projectName) addProject({ variables: { id: user.id, name: projectName } });
   };
+
   return (
     <>
       <h1>Current User:{name}</h1>
@@ -45,7 +64,7 @@ const UserPage = ({ name, id, projects }) => {
           value={projectDescription}
           onChange={(e) => setProjectDescription(e.target.value)}
         ></input>
-        <button onClick={addProject} style={{ marginLeft: '20px', cursor: 'pointer' }}>
+        <button onClick={handleAddProjectClick} style={{ marginLeft: '20px', cursor: 'pointer' }}>
           Add Project
         </button>
       </div>

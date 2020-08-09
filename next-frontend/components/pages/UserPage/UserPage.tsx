@@ -25,6 +25,12 @@ const ADD_PROJECT_QUERY = gql`
     addProject(userId: $id, name: $name, description: $description) {
       name
       description
+      tasks {
+        task
+      }
+      workSessions {
+        name
+      }
     }
   }
 `;
@@ -33,22 +39,28 @@ const UserPage = ({ name, id, projects }) => {
   const { user, logout } = useUser();
   const [projectName, setProjectName] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
-  const { loading, error, data } = useQuery(GET_USER_PROJECTS_QUERY, {
+  const { loading, error, data, refetch } = useQuery(GET_USER_PROJECTS_QUERY, {
     variables: { id: user ? user.id : id },
   });
 
-  console.log(data);
-  const [addProject] = useMutation(ADD_PROJECT_QUERY);
+  const userProjects = data ? data.getUser.projects : projects;
+
+  const [addProject] = useMutation(ADD_PROJECT_QUERY, {
+    refetchQueries: [`getUserProjects`],
+  });
 
   const handleAddProjectClick = () => {
-    if (user && projectName) addProject({ variables: { id: user.id, name: projectName } });
+    if (user && projectName)
+      addProject({
+        variables: { id: user.id, name: projectName, description: projectDescription },
+      });
   };
 
   return (
     <>
       <h1>Current User:{name}</h1>
       <h3>Current Id: {id}</h3>
-      {projects.map((project) => (
+      {userProjects.map((project) => (
         <div style={{ border: 'solid 1px black', display: 'inline-block' }}>
           <h4>Project: {project.name}</h4>
           <p>Description: {project.description}</p>
@@ -66,6 +78,13 @@ const UserPage = ({ name, id, projects }) => {
         ></input>
         <button onClick={handleAddProjectClick} style={{ marginLeft: '20px', cursor: 'pointer' }}>
           Add Project
+        </button>
+        <button
+          onClick={() => {
+            refetch();
+          }}
+        >
+          refetch
         </button>
       </div>
     </>

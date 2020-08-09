@@ -1,21 +1,13 @@
-const {
-  getUsers,
-  addUser,
-  updateUser,
-  deleteUser,
-  getProjects,
-} = require("../postgres/queries")
+const { getUser, addProject, addUser } = require('../database/queries');
 
 module.exports = {
   resolvers: {
     Query: {
-      getUsers: getUsers,
-      getProjects: getProjects,
+      getUser,
     },
     Mutation: {
-      addUser: addUser,
-      updateUser: updateUser,
-      deleteUser: deleteUser,
+      addProject,
+      addUser,
     },
   },
-}
+};

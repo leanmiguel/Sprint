@@ -2,10 +2,10 @@ import Head from 'next/head';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import Everest from '../mockdata/Everest.json';
-import Nextday from '../components/nextday';
-import Upcoming from '../components/upcoming';
-import NextMeeting from '../components/nextmeeting';
+import Everest from '../../../mockdata/Everest.json';
+import Nextday from '../../nextday';
+import Upcoming from '../../upcoming';
+import NextMeeting from '../../nextmeeting';
 
 const Page = styled.div`
   grid-area: 2 / 2 / 3 / 3;
@@ -94,6 +94,7 @@ class projectData {
 
 const project = () => {
   let data = Object.assign(new projectData(), Everest);
+
   return (
     <>
       <Head>

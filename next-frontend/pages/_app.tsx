@@ -1,6 +1,17 @@
-import "../styles.css"
+import { ApolloProvider } from '@apollo/client';
 
-// This default export is required in a new `pages/_app.js` file.
-export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import '../styles.css';
+import { UserProvider } from '../components/context/UserContext';
+
+import apollo from '../libs/apollo';
+function MyApp({ Component, pageProps }) {
+  return (
+    <ApolloProvider client={apollo}>
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
+    </ApolloProvider>
+  );
 }
+
+export default MyApp;

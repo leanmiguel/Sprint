@@ -1,14 +1,14 @@
 // setup
-require("dotenv").config()
+require('dotenv').config();
 
-//graphql setup
+// graphql setup
 
-const { ApolloServer } = require("apollo-server")
-const { resolvers } = require("./graphql/resolvers")
-const { typeDefs } = require("./graphql/typeDefs")
+const { ApolloServer } = require('apollo-server');
+const { resolvers } = require('./graphql/resolvers');
+const { typeDefs } = require('./graphql/typeDefs');
 
-const server = new ApolloServer({ typeDefs, resolvers })
+const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`)
-})
+  console.log(`🚀  Server ready at ${url}`);
+});
